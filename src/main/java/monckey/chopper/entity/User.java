@@ -23,24 +23,22 @@ public class User {
     private UUID id;
 
     private String firstname;
-
     private String lastname;
 
     @NotNull(message = "user name is required.")
     @Basic(optional = false)
-
     private String username;
 
     private String email;
-
     private String password;
-
     private String phone;
-
     private String status;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
     private Cart cart;
+
+    @OneToOne
+    private Card card;
 
     /*association unidirectionnelle*/
     @OneToMany(cascade = CascadeType.ALL)
@@ -49,7 +47,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "Adresse_Id"))
     private List<Address> addresses = Collections.emptyList();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Orders> orders = Collections.emptyList();
 
     public User(){

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +23,18 @@ public class Item {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "ID")
+    private Product product;
+
+    private BigDecimal price;
+    private Integer quantity;
+
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Cart> carts = Collections.emptyList();
+
+    @ManyToMany
+    private List<Orders> orders = new ArrayList<>();
 
     public Item(){
         super();
