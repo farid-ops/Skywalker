@@ -27,7 +27,7 @@ public class Address {
     private String pincode;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
-    private List<Orders> orders = new ArrayList<>();
+    private List<OrderEntity> orders = new ArrayList<>();
 
     public Address(){
         super();

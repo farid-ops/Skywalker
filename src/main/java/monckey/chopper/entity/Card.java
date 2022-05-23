@@ -26,7 +26,7 @@ public class Card {
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Orders> orders = new ArrayList<>();
+    private List<OrderEntity> orders = new ArrayList<>();
 
     public Card(){
         super();

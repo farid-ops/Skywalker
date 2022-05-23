@@ -24,7 +24,7 @@ public class Shipment {
     private String carrier;
 
     @OneToOne
-    private Orders orders;
+    private OrderEntity orderEntity;
 
     public Shipment(){
         super();

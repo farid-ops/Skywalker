@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Orders {
+public class OrderEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
@@ -30,6 +31,8 @@ public class Orders {
     @ManyToOne
     @JoinColumn(referencedColumnName = "ID")
     private Card card;
+
+    private BigDecimal totale;
 
 
     @Enumerated(EnumType.STRING)
@@ -49,7 +52,7 @@ public class Orders {
     @JoinTable(name = "Item_order", joinColumns = @JoinColumn, inverseJoinColumns = @JoinColumn)
     private List<Item> items = new ArrayList<>();
 
-    public Orders(){
+    public OrderEntity(){
         super();
     }
 }

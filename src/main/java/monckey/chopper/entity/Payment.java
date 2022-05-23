@@ -20,7 +20,7 @@ public class Payment {
     private String message;
 
     @OneToOne
-    private Orders orders;
+    private OrderEntity orderEntity;
 
     public Payment(){
         super();

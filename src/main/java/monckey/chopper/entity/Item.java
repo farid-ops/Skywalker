@@ -34,7 +34,7 @@ public class Item {
     private List<Cart> carts = Collections.emptyList();
 
     @ManyToMany
-    private List<Orders> orders = new ArrayList<>();
+    private List<OrderEntity> orders = new ArrayList<>();
 
     public Item(){
         super();

@@ -48,7 +48,7 @@ public class User {
     private List<Address> addresses = Collections.emptyList();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Orders> orders = Collections.emptyList();
+    private List<OrderEntity> orders = Collections.emptyList();
 
     public User(){
         super();
