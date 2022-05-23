@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface OrdersRepository extends JpaRepository<OrderEntity, UUID> {
+public interface OrderEntityRepository extends JpaRepository<OrderEntity, UUID> {
 
     @Query("select o from OrderEntity o join o.user u where u.id=:id")
     Iterable<OrderEntity> findByCustomerId(@Param("id") String id);
