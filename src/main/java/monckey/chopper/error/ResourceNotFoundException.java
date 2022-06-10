@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public class ResourceNotFoundException extends RuntimeException{
 
-    private String error;
-    private String message;
+    private final String error;
+    private final String message;
 
     public ResourceNotFoundException(ErrorCode code){
         super(code.getMessage());

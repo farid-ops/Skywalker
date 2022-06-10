@@ -19,8 +19,8 @@ public enum ErrorCode {
     ITEM_NOT_FOUND("SHANKS-0012", "Requested item not found"),
     GENERIC_ALREADY_EXISTS("ASCE-0013", "Already exists.");
 
-    private String errorCode;
-    private String message;
+    private final String errorCode;
+    private final String message;
 
      ErrorCode(final String errorCode, final String message){
         this.errorCode = errorCode;

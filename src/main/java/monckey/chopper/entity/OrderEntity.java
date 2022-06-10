@@ -34,7 +34,6 @@ public class OrderEntity {
 
     private BigDecimal totale;
 
-
     @Enumerated(EnumType.STRING)
     private Status status;
 

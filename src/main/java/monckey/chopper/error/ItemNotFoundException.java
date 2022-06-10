@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public class ItemNotFoundException extends RuntimeException{
 
-    private String error;
-    private String message;
+    private final String error;
+    private final String message;
 
     public ItemNotFoundException(ErrorCode error){
         super(error.getMessage());
