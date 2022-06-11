@@ -5,7 +5,6 @@ import monckey.chopper.entity.Item;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 public interface CartService {
 
@@ -17,7 +16,7 @@ public interface CartService {
 
     void deleteItemFromCart(String customerId, String itemId);
 
-    Optional<Cart> getCartByCustomerId(String customerId);
+    Cart getCartByCustomerId(String customerId);
 
     Item getCartItemByItemId(String customerId, String itemId);
 }
