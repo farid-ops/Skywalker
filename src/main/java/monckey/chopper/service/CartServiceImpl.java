@@ -4,25 +4,25 @@ import monckey.chopper.entity.Cart;
 import monckey.chopper.entity.Item;
 import monckey.chopper.error.CustomerNotFoundException;
 import monckey.chopper.error.GenericAlreadyExistsException;
+import monckey.chopper.error.ItemNotFoundException;
 import monckey.chopper.repo.CartRepository;
-import monckey.chopper.repo.ItemRepository;
 import monckey.chopper.repo.UserRepository;
 import org.springframework.stereotype.Service;
+import static org.springframework.objenesis.instantiator.util.UnsafeUtils.getUnsafe;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 @Service
 public class CartServiceImpl implements CartService {
 
     private final CartRepository cartRepository;
-    private final ItemRepository itemRepository;
     private final UserRepository userRepository;
 
-    public CartServiceImpl(CartRepository cartRepository, ItemRepository itemRepository, UserRepository userRepository){
+    public CartServiceImpl(CartRepository cartRepository, UserRepository userRepository){
         this.cartRepository = cartRepository;
-        this.itemRepository = itemRepository;
         this.userRepository = userRepository;
     }
 
@@ -86,6 +86,17 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Item getCartItemByItemId(String customerId, String itemId) {
+
+        Cart cart = this.cartRepository.findCartByCustomerId(UUID.fromString(customerId));
+        AtomicReference<Item> itemAtomicReference = new AtomicReference<>();
+
+        cart.getItems().forEach(item->{
+            if (item.getProduct().getId().equals(itemId))
+                itemAtomicReference.set(item);
+        });
+
+        if (Objects.isNull(itemAtomicReference.get()))
+            getUnsafe().throwException(new ItemNotFoundException(String.format(" - %s"+itemId)));
         return null;
     }
 }
