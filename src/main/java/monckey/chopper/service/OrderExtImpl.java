@@ -66,7 +66,7 @@ public class OrderExtImpl implements OrderExt{
 
         this.orderEntityRepository.save(orderEntity);
 
-        Optional<Cart> optionalCart = this.cartRepository.findCartByCustomerId(String.valueOf(order.getUser().getId()));
+        Optional<Cart> optionalCart = Optional.ofNullable(this.cartRepository.findCartByCustomerId(order.getUser().getId()));
         Cart cart = optionalCart.orElseThrow(()-> new ResourceNotFoundException(String.format("Cart not found for given customer (:ID)%s", order.getUser().getId())));
 
         this.entityManager.createQuery("select o from OrderEntity o ");
