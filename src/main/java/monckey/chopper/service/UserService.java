@@ -10,7 +10,7 @@ public interface UserService {
 
     void deleteCustomerById(String customerId);
 
-    Optional<Address> getCustomerByAddressId(String addressId);
+    Optional<Iterable<Address>> getAddressByCustomerId(String id);
 
     Iterable<User> getAllCustomers();
 
