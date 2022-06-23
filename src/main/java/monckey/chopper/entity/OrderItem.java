@@ -27,10 +27,12 @@ public class OrderItem {
     }
 
     public OrderItem setOrderId(UUID orderId){
+        this.orderId = orderId;
         return this;
     }
 
     public OrderItem setItemId(UUID itemId){
+        this.itemId = itemId;
         return this;
     }
 }

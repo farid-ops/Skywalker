@@ -47,6 +47,9 @@ public class OrderEntity {
     @JoinColumn(referencedColumnName = "ID")
     private Shipment shipment;
 
+    @OneToOne
+    private Authorization authorization;
+
     @ManyToMany
     @JoinTable(name = "Item_order", joinColumns = @JoinColumn, inverseJoinColumns = @JoinColumn)
     private List<Item> items = new ArrayList<>();
