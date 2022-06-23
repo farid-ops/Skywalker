@@ -13,17 +13,24 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @Getter
-@Setter
 public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    private String orderId;
-    private String itemId;
+    private UUID orderId;
+    private UUID itemId;
 
     public OrderItem(){
         super();
+    }
+
+    public OrderItem setOrderId(UUID orderId){
+        return this;
+    }
+
+    public OrderItem setItemId(UUID itemId){
+        return this;
     }
 }

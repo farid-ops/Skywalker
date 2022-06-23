@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<Card> getCardByCustomerId(String customerId) {
-        return cardRepository.findCardByCustomerId(UUID.fromString(customerId));
+        return this.userRepository.findById(UUID.fromString(customerId)).map(User::getCard);
     }
 
     @Override
