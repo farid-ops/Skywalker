@@ -6,9 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /*
 * Un user est associe a un panier pas plus.
@@ -39,6 +37,9 @@ public class User {
 
     @OneToOne
     private Card card;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Collection<Role> roles = new ArrayList<>();
 
     /*association unidirectionnelle*/
     @OneToMany(cascade = CascadeType.ALL)
