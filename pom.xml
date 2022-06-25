@@ -47,6 +47,12 @@
             <version>8.5.12</version>
         </dependency>
         <!--Swagger UI-->
+        <!--Java faker-->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.1</version>
+        </dependency>
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
