@@ -5,10 +5,12 @@ import monckey.chopper.entity.Card;
 import monckey.chopper.entity.User;
 import monckey.chopper.repo.CardRepository;
 import monckey.chopper.repo.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
