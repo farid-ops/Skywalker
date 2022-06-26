@@ -15,7 +15,7 @@ import java.util.UUID;
 @Setter
 public class Address {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String number;

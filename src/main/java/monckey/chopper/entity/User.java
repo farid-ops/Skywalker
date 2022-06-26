@@ -17,7 +17,7 @@ import java.util.*;
 @Setter
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private String firstname;

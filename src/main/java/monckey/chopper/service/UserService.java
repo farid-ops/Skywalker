@@ -17,4 +17,6 @@ public interface UserService {
     Optional<Card> getCardByCustomerId(String customerId);
 
     Optional<User> getCustomerById(String customerId);
+
+    Optional<User> save(User user);
 }

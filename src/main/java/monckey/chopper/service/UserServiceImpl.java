@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService {
     public Optional<User> getCustomerById(String customerId) {
         return this.userRepository.findById(UUID.fromString(customerId));
     }
+
+    @Override
+    public Optional<User> save(User user) {
+        return Optional.of(this.userRepository.save(user));
+    }
 }
