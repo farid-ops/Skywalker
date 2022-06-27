@@ -20,7 +20,8 @@ import java.util.UUID;
 @Setter
 public class Cart {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private UUID id;
 
     @OneToOne

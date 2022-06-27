@@ -17,7 +17,8 @@ import java.util.UUID;
 @Setter
 public class OrderEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private UUID id;
 
     @ManyToOne

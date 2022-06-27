@@ -18,7 +18,8 @@ import java.util.*;
 @Setter
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private UUID id;
 
     private String firstname;

@@ -15,7 +15,8 @@ import java.util.UUID;
 @Setter
 public class Address {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private UUID id;
 
     private String number;

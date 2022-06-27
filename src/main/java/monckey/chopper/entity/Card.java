@@ -14,10 +14,10 @@ import java.util.UUID;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private UUID id;
 
-    private String lastname;
     private String number;
     private String expires;
     private String cvv;

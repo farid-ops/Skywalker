@@ -14,7 +14,8 @@ import java.util.UUID;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private UUID id;
     private String rolename;
 
