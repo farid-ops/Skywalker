@@ -16,7 +16,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -74,7 +73,7 @@ public class OrderExtImpl implements OrderExt{
         * */
         Timestamp orderDate = Timestamp.from(Instant.now());
         this.entityManager.createNativeQuery("""
-        INSERT INTO ecomm.orders(customer_id, address_id, card_id, status, total, order_date)
+        INSERT INTO tijara.orders(customer_id, address_id, card_id, status, total, order_date)
         VALUES(?,?,?,?,?)
         """)
                 .setParameter(1, order.getUser().getId())
@@ -96,7 +95,7 @@ public class OrderExtImpl implements OrderExt{
         this.itemRepository.deleteCartItemById(cart.getItems().stream().map(Item::getId).collect(Collectors.toList()), cart.getId());
 
         OrderEntity orderEntity = (OrderEntity) this.entityManager.createNativeQuery("""
-        SELECT o.* FROM ecomm.orders o WHERE o.customer_id =? AND o.order_date >=?
+        SELECT o.* FROM tijara.orders o WHERE o.customer_id =? AND o.order_date >=?
         """, OrderEntity.class)
                 .setParameter(1, order.getUser().getId())
                 .setParameter(2, OffsetDateTime.ofInstant(orderDate.toInstant(), ZoneId.of("Z")).truncatedTo(

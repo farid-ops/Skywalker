@@ -12,10 +12,10 @@ import java.util.UUID;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, UUID> {
 
-    @Query(value = "select i.* from ecomm.cart c, ecomm.item i, ecomm.user u, ecomm.cart_item ci where u.id = :customerId and c.user_id=u.id and c.id=ci.cart_id and i.id=ci.item_id", nativeQuery=true)
+    @Query(value = "select i.* from tijara.cart c, tijara.item i, tijara.customer u, tijara.cart_item ci where u.id = :customerId and c.customer_id=u.id and c.id=ci.cart_id and i.id=ci.item_id", nativeQuery=true)
     Iterable<Item> findByCustomerId(UUID customerId);
 
     @Modifying
-    @Query(value = "delete from ecomm.cart_item where item_id in (:ids) and cart_id = :cartId", nativeQuery = true)
+    @Query(value = "delete from tijara.cart_item where item_id in (:ids) and cart_id = :cartId", nativeQuery = true)
     void deleteCartItemById(List<UUID> ids,UUID cartId);
 }

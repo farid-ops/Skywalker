@@ -17,15 +17,15 @@ import java.util.UUID;
 @Setter
 public class OrderEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(referencedColumnName = "ID")
     private User user;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(referencedColumnName = "ID")
     private Address address;
 
     @ManyToOne

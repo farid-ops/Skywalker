@@ -12,6 +12,7 @@ import java.util.*;
 * Un user est associe a un panier pas plus.
 * */
 @Entity
+@Table(name = "customer")
 @AllArgsConstructor
 @Getter
 @Setter

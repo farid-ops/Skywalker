@@ -20,7 +20,7 @@ import java.util.UUID;
 @Setter
 public class Item {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne

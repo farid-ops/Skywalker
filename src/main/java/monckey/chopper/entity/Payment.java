@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 public class Payment {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     private boolean authorize;
