@@ -47,7 +47,7 @@ public class OrderExtImpl implements OrderExt{
         /*
         * Get all items from database
         * */
-        Iterable<Item> itemFromDb = this.itemRepository.findByCustomerId(order.getUser().getId());
+        Iterable<Item> itemFromDb = this.itemRepository.findByCustomerId(order.getCustomer().getId());
         /*
         * Collect all item in list by the separator
         * */
@@ -57,7 +57,7 @@ public class OrderExtImpl implements OrderExt{
         * verified if user Id have or not a cart
         * */
         if (items.size()<1)
-            throw new ResourceNotFoundException(String.format("There is no item found for this user ID (%s) cart ",order.getUser().getId()));
+            throw new ResourceNotFoundException(String.format("There is no item found for this user ID (%s) cart ",order.getCustomer().getId()));
 
         /*
         * Get total order price
@@ -76,7 +76,7 @@ public class OrderExtImpl implements OrderExt{
         INSERT INTO tijara.orders(customer_id, address_id, card_id, status, total, order_date)
         VALUES(?,?,?,?,?)
         """)
-                .setParameter(1, order.getUser().getId())
+                .setParameter(1, order.getCustomer().getId())
                 .setParameter(2, order.getAddress().getId())
                 .setParameter(3, order.getCard().getId())
                 .setParameter(4, Status.CREATED)
@@ -87,17 +87,17 @@ public class OrderExtImpl implements OrderExt{
         /*
         * je verifie voir si l'utilisateur a deja un panier
         * */
-        Cart cart = this.cartRepository.findCartByCustomerId(order.getUser().getId());
+        Cart cart = this.cartRepository.findCartByCustomerId(order.getCustomer().getId());
 
         if (Objects.isNull(cart))
-            throw new ResourceNotFoundException(String.format("Cart not found for given customer (ID: %s)", order.getUser().getId()));
+            throw new ResourceNotFoundException(String.format("Cart not found for given customer (ID: %s)", order.getCustomer().getId()));
 
         this.itemRepository.deleteCartItemById(cart.getItems().stream().map(Item::getId).collect(Collectors.toList()), cart.getId());
 
         OrderEntity orderEntity = (OrderEntity) this.entityManager.createNativeQuery("""
         SELECT o.* FROM tijara.orders o WHERE o.customer_id =? AND o.order_date >=?
         """, OrderEntity.class)
-                .setParameter(1, order.getUser().getId())
+                .setParameter(1, order.getCustomer().getId())
                 .setParameter(2, OffsetDateTime.ofInstant(orderDate.toInstant(), ZoneId.of("Z")).truncatedTo(
                 ChronoUnit.MICROS))
                 .getSingleResult();

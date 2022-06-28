@@ -200,7 +200,7 @@ create TABLE IF NOT EXISTS tijara.cart_item (
     REFERENCES tijara.item(id)
 );
 
-insert into tijara.customer (id, username, password, firstname, lastname, email, phone, status) values('a1b9b31d-e73c-4112-af7c-b68530f38222', 'test', 'pwd', 'Test', 'User', 'test@user.com', '234234234', 'ACTIVE');
+insert into tijara.customer (id, username, password, firstname, lastname, email, phone, status) values('a1b9b31d-e73c-4112-af7c-b68530f38222', 'test', 'pwd', 'Test', 'Customer', 'test@user.com', '234234234', 'ACTIVE');
 insert into tijara.customer (id, username, password, firstname, lastname, email, phone, status) values('a1b9b31d-e73c-4112-af7c-b68530f38223', 'test', 'pwd', 'Test2', 'User2', 'test2@user.com', '234234234', 'ACTIVE');
 INSERT INTO tijara.address VALUES ('a731fda1-aaad-42ea-bdbc-a27eeebe2cc0', '9I-999', 'Fraser Suites Le Claridge', 'Champs-Elysees', 'Paris', 'Île-de-France', 'France', '75008');
 insert into tijara.customer_address values ('a1b9b31d-e73c-4112-af7c-b68530f38222', 'a731fda1-aaad-42ea-bdbc-a27eeebe2cc0');

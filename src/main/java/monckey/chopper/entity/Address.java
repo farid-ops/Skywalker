@@ -1,5 +1,6 @@
 package monckey.chopper.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Address {
     private String pincode;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
+    @JsonIgnore
     private List<OrderEntity> orders = new ArrayList<>();
 
     public Address(){

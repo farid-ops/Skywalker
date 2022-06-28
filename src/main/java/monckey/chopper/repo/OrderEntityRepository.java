@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository
 public interface OrderEntityRepository extends JpaRepository<OrderEntity, UUID> {
 
-    @Query("select o from OrderEntity o join o.user u where u.id=:id")
+    @Query("select o from OrderEntity o join o.customer u where u.id=:id")
     Iterable<OrderEntity> findByCustomerId(@Param("id") String id);
 
 //    @Query("select o from OrderEntity o where o.user.id=:customerId and o.orderDate=:date")

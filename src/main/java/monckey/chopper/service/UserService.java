@@ -2,7 +2,7 @@ package monckey.chopper.service;
 
 import monckey.chopper.entity.Address;
 import monckey.chopper.entity.Card;
-import monckey.chopper.entity.User;
+import monckey.chopper.entity.Customer;
 
 import java.util.Optional;
 
@@ -12,11 +12,11 @@ public interface UserService {
 
     Optional<Iterable<Address>> getAddressByCustomerId(String id);
 
-    Iterable<User> getAllCustomers();
+    Iterable<Customer> getAllCustomers();
 
     Optional<Card> getCardByCustomerId(String customerId);
 
-    Optional<User> getCustomerById(String customerId);
+    Optional<Customer> getCustomerById(String customerId);
 
-//    Optional<User> save(User user);
+//    Optional<Customer> save(Customer user);
 }

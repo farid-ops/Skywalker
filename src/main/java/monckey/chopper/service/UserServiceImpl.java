@@ -2,7 +2,7 @@ package monckey.chopper.service;
 
 import monckey.chopper.entity.Address;
 import monckey.chopper.entity.Card;
-import monckey.chopper.entity.User;
+import monckey.chopper.entity.Customer;
 import monckey.chopper.repo.CardRepository;
 import monckey.chopper.repo.UserRepository;
 import org.springframework.stereotype.Service;
@@ -29,26 +29,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<Iterable<Address>> getAddressByCustomerId(String id) {
-        return this.userRepository.findById(UUID.fromString(id)).map(User::getAddresses);
+        return this.userRepository.findById(UUID.fromString(id)).map(Customer::getAddresses);
     }
 
     @Override
-    public Iterable<User> getAllCustomers() {
+    public Iterable<Customer> getAllCustomers() {
         return this.userRepository.findAll();
     }
 
     @Override
     public Optional<Card> getCardByCustomerId(String customerId) {
-        return this.userRepository.findById(UUID.fromString(customerId)).map(User::getCard);
+        return Optional.of(this.userRepository.findById(UUID.fromString(customerId)).map(Customer::getCards).get().get(0));
     }
 
     @Override
-    public Optional<User> getCustomerById(String customerId) {
+    public Optional<Customer> getCustomerById(String customerId) {
         return this.userRepository.findById(UUID.fromString(customerId));
     }
 
 //    @Override
-//    public Optional<User> save(User user) {
+//    public Optional<Customer> save(Customer user) {
 //        return Optional.of(this.userRepository.save(user));
 //    }
 }

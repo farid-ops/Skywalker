@@ -23,7 +23,7 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "ID")
-    private User user;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "ID")

@@ -2,7 +2,7 @@ package monckey.chopper.api;
 
 import monckey.chopper.entity.Address;
 import monckey.chopper.entity.Card;
-import monckey.chopper.entity.User;
+import monckey.chopper.entity.Customer;
 import monckey.chopper.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +35,8 @@ public class UserApi {
         return new ResponseEntity<>(this.userService.getAddressByCustomerId(customerId), HttpStatus.FOUND);
     }
 
-    @GetMapping(value = "/")
-    public ResponseEntity<Iterable<User>> getAllCustomers(){
+    @GetMapping(value = "/all")
+    public ResponseEntity<Iterable<Customer>> getAllCustomers(){
         return new ResponseEntity<>(this.userService.getAllCustomers(), HttpStatus.OK);
     }
 
@@ -46,7 +46,7 @@ public class UserApi {
     }
 
     @GetMapping(value = "/customer/{customerId}")
-    public ResponseEntity<Optional<User>> getCustomerById(@PathVariable("customerId") String customerId){
+    public ResponseEntity<Optional<Customer>> getCustomerById(@PathVariable("customerId") String customerId){
         return new ResponseEntity<>(this.userService.getCustomerById(customerId), HttpStatus.FOUND);
     }
 

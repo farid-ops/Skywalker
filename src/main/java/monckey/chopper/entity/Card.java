@@ -22,9 +22,9 @@ public class Card {
     private String expires;
     private String cvv;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(referencedColumnName = "ID")
-    private User user;
+    private Customer customer;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderEntity> orders = new ArrayList<>();

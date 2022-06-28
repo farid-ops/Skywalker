@@ -76,8 +76,8 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart getCartByCustomerId(String customerId) {
         Cart cart = this.cartRepository.findCartByCustomerId(UUID.fromString(customerId));
-        if (Objects.isNull(cart.getUser())){
-            cart.setUser(this.userRepository.findById(UUID.fromString(customerId))
+        if (Objects.isNull(cart.getCustomer())){
+            cart.setCustomer(this.userRepository.findById(UUID.fromString(customerId))
                     .orElseThrow(()-> new CustomerNotFoundException(String.format("-%s "+customerId)))
             );
         }

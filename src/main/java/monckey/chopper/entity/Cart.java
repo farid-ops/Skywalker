@@ -26,7 +26,7 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "User_ID")
-    private User user;
+    private Customer customer;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "ID_Cart_Item_ID",

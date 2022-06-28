@@ -12,6 +12,6 @@ import java.util.UUID;
 @Repository
 public interface CardRepository extends JpaRepository<Card, UUID> {
 
-    @Query("select c from Card c where c.user.id =:customerId")
+    @Query("select c from Card c where c.customer.id =:customerId")
     Optional<Card> findCardByCustomerId(@Param("customerId") UUID customerId);
 }

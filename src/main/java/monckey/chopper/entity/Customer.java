@@ -1,5 +1,6 @@
 package monckey.chopper.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import java.util.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Customer {
 
     @Id @GeneratedValue
     @Column(name = "ID", nullable = false, updatable = false)
@@ -34,13 +35,13 @@ public class User {
     private String phone;
     private String status;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY, orphanRemoval = true)
     private Cart cart;
 
-    @OneToOne
-    private Card card;
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Card> cards;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Collection<Role> roles = new ArrayList<>();
 
     /*association unidirectionnelle*/
@@ -50,10 +51,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "Adresse_Id"))
     private List<Address> addresses = Collections.emptyList();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")
     private List<OrderEntity> orders = Collections.emptyList();
 
-    public User(){
+    public Customer(){
         super();
     }
 }
