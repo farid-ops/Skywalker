@@ -9,5 +9,4 @@ public class SkypeaApplication{
     public static void main(String[] args) {
         SpringApplication.run(SkypeaApplication.class, args);
     }
-
 }

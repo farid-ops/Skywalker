@@ -47,6 +47,11 @@
             <version>8.5.12</version>
         </dependency>
         <!--Swagger UI-->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>1.6.4</version>
+        </dependency>
         <!--Java faker-->
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -76,6 +81,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-web</artifactId>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
